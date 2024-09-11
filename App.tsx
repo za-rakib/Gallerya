@@ -1,10 +1,11 @@
 import {View, Text} from 'react-native';
 import React from 'react';
+import AppNavContainer from './src/navigations/Index';
 
 const App = () => {
   return (
-    <View>
-      <Text>Gallerya</Text>
+    <View style={{flex: 1}}>
+      <AppNavContainer />
     </View>
   );
 };
