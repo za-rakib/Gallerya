@@ -10,9 +10,7 @@ const BottomTabNavigator = () => {
   return (
     <>
       <Tab.Navigator
-        screenOptions={() => {
-          return {headerShown: false};
-        }}
+        screenOptions={{headerShown: false}}
         backBehavior="history">
         <Tab.Screen name={HOME_NAVIGATOR} component={HomeNavigator} />
         <Tab.Screen name={ALBUM_NAVIGATOR} component={AlbumsNavigator} />
