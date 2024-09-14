@@ -17,12 +17,16 @@ const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName={HOME_NAVIGATOR}
-      activeColor="#f0edf6"
-      inactiveColor="#3e2465"
-      barStyle={{backgroundColor: '#7970B1', height: 70, marginTop: 0}}
+      activeColor="#ffffff"
+      inactiveColor="#b0bec5"
+      barStyle={{
+        backgroundColor: '#4a148c',
+        height: 70,
+        marginTop: 10,
+      }}
       screenOptions={({route}) => ({
         headerShown: false,
-        tabBarIcon: ({color, focused}) => {
+        tabBarIcon: ({color}) => {
           let iconName;
 
           if (route.name === HOME_NAVIGATOR) {
@@ -31,13 +35,11 @@ const BottomTabNavigator = () => {
             iconName = 'image';
           }
 
-          return <Icon name={iconName} size={20} color={color} />;
+          return <Icon name={iconName} size={24} color={color} />;
         },
       })}>
       <Tab.Screen name={HOME_NAVIGATOR} component={HomeNavigator} />
       <Tab.Screen name={ALBUM_NAVIGATOR} component={AlbumsNavigator} />
-      {/* <Tab.Screen name={LIVETV_NAVIGATOR} component={LiveTvNavigator} /> */}
-      {/* <Tab.Screen name={PROFILE} component={Profile} /> */}
     </Tab.Navigator>
   );
 };

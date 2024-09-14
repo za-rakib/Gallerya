@@ -6,8 +6,11 @@ import {
   ActivityIndicator,
   useWindowDimensions,
   SafeAreaView,
+  Text,
+  StatusBar,
 } from 'react-native';
 import ImageCard from '../components/ImageCard';
+import SearchBar from '../components/SearchBar';
 
 const Gallery = () => {
   const [items, setItems] = useState([]);
@@ -46,6 +49,9 @@ const Gallery = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* <StatusBar animated={true} backgroundColor="#ffffff" /> */}
+      {/* <SearchBar /> */}
+      <Text style={styles.idText}>Image</Text>
       <View>
         {loading && <ActivityIndicator size="large" color="#ff004c" />}
         <FlatList
@@ -67,7 +73,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 10,
+    backgroundColor: 'red',
+  },
+  idText: {
+    fontSize: 25,
+    color: '#888',
+    fontWeight: 'bold',
+    margin: 15,
   },
 });
 
