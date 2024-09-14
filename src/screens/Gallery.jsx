@@ -48,9 +48,9 @@ const Gallery = () => {
   const renderItem = ({item}) => <ImageCard item={item} />;
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} forceInset={{bottom: 'never'}}>
       {/* <StatusBar animated={true} backgroundColor="#ffffff" /> */}
-      {/* <SearchBar /> */}
+      <SearchBar />
       <Text style={styles.idText}>Image</Text>
       <View>
         {loading && <ActivityIndicator size="large" color="#ff004c" />}
@@ -71,14 +71,15 @@ const Gallery = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'red',
+    height: '100%',
+    width: '100%',
+    marginBottom: 20,
   },
   idText: {
     fontSize: 25,
     color: '#888',
     fontWeight: 'bold',
+    alignSelf: 'center',
     margin: 15,
   },
 });

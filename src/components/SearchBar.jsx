@@ -4,6 +4,7 @@ import React from 'react';
 const SearchBar = () => {
   return (
     <View style={{backgroundColor: '#eee', padding: 10}}>
+      <Text>Rakib</Text>
       <TextInput
         placeholder="Search..."
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
