@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   FlatList,
@@ -8,14 +8,16 @@ import {
   SafeAreaView,
   Text,
   StatusBar,
+  ScrollView,
 } from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import ImageCard from '../components/ImageCard';
 import SearchBar from '../components/SearchBar';
+import {fetchImages} from '../features/images/imagesSlice';
 
 const Gallery = () => {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
   const {width} = useWindowDimensions();
+  const dispatch = useDispatch();
 
   const calculateNumColumns = () => {
     const cardSize = 120;
@@ -23,44 +25,32 @@ const Gallery = () => {
     return Math.floor(width / (cardSize + margin * 2));
   };
 
-  const fetchPhotos = (startIndex, limit) => {
-    if (loading) {
-      return;
-    }
-    setLoading(true);
-    fetch('https://jsonplaceholder.typicode.com/photos?albumId=1')
-      .then(response => response.json())
-      .then(data => {
-        const photosData = data.slice(startIndex, startIndex + limit);
-        setItems(existingItems => [...existingItems, ...photosData]);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-        setLoading(false);
-      });
-  };
+  const {error, isLoading, images} = useSelector(state => state.images);
 
   useEffect(() => {
-    fetchPhotos(0, 20);
-  }, []);
+    dispatch(fetchImages({album: 1}));
+  }, [dispatch]);
 
   const renderItem = ({item}) => <ImageCard item={item} />;
 
   return (
-    <SafeAreaView style={styles.container} forceInset={{bottom: 'never'}}>
-      {/* <StatusBar animated={true} backgroundColor="#ffffff" /> */}
+    <SafeAreaView style={styles.container}>
+      <StatusBar animated={true} backgroundColor="#ffffff" />
       <SearchBar />
-      <Text style={styles.idText}>Image</Text>
+      <Text style={styles.idText}>Image Gallery</Text>
       <View>
-        {loading && <ActivityIndicator size="large" color="#ff004c" />}
+        {!isLoading && error && (
+          <View>
+            <Text>{error}</Text>
+          </View>
+        )}
+        {isLoading && <ActivityIndicator size="large" color="#ff004c" />}
         <FlatList
-          data={items}
+          data={images}
           renderItem={renderItem}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.id.toString()}
           numColumns={calculateNumColumns()}
           showsVerticalScrollIndicator={false}
-          // onEndReached={() => fetchPhotos(items.length, 20)}
           onEndReachedThreshold={0.5}
         />
       </View>
