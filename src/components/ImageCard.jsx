@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {IMAGE_DETAIL} from '../constants/routeNames';
+import FastImage from 'react-native-fast-image';
 const ImageCard = ({item}) => {
   const navigation = useNavigation();
 
@@ -13,7 +14,15 @@ const ImageCard = ({item}) => {
   return (
     <View>
       <TouchableOpacity style={styles.card} onPress={handlePress}>
-        <Image source={{uri: item.thumbnailUrl}} style={styles.image} />
+        {/* <Image source={{uri: item.thumbnailUrl}} style={styles.image} /> */}
+        <FastImage
+          style={styles.image}
+          source={{
+            uri: item.thumbnailUrl,
+            priority: FastImage.priority.normal,
+          }}
+          resizeMode={FastImage.resizeMode.contain}
+        />
       </TouchableOpacity>
     </View>
   );

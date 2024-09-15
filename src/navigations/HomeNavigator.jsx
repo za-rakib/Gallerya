@@ -11,8 +11,8 @@ const HomeNavigator = () => {
     <HomeStack.Navigator
       initialRouteName={REDUX}
       screenOptions={{headerShown: false}}>
-      <HomeStack.Screen name={REDUX} component={Redux} />
-      {/* <HomeStack.Screen name={HOME} component={Gallery} /> */}
+      {/* <HomeStack.Screen name={REDUX} component={Redux} /> */}
+      <HomeStack.Screen name={HOME} component={Gallery} />
       <HomeStack.Screen name={IMAGE_DETAIL} component={ImageDetail} />
     </HomeStack.Navigator>
   );
