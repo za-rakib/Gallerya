@@ -35,7 +35,7 @@ const Gallery = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar animated={true} backgroundColor="#ffffff" />
+      <StatusBar animated={true} backgroundColor="#232323" />
       <SearchBar />
       <Text style={styles.idText}>Image Gallery</Text>
       <View>
