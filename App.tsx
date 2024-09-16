@@ -1,4 +1,3 @@
-import {View, Text, SafeAreaView} from 'react-native';
 import React from 'react';
 import AppNavContainer from './src/navigations/Index';
 import {Provider} from 'react-redux';
