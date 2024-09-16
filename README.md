@@ -40,7 +40,9 @@ Currently using Node v18.16.0 , java 20.0.2 and Ruby version 3.0.0p0 to build.
 
 ### using npm
 
+```bash
 npm start
+```
 
 4: Start Application
 
