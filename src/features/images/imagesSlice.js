@@ -3,8 +3,8 @@ import {getImages} from './imageAPI';
 
 export const fetchImages = createAsyncThunk(
   'images/fetchImages',
-  async payload => {
-    const images = await getImages(payload);
+  async ({album}) => {
+    const images = await getImages(album);
     return images;
   },
 );
@@ -13,7 +13,7 @@ const initialState = {
   images: [],
   loading: false,
   error: null,
-  searchTerm: '',
+  hasMore: true,
 };
 
 const imagesSlice = createSlice({
@@ -23,9 +23,6 @@ const imagesSlice = createSlice({
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },
-    deleteImage: (state, action) => {
-      state.images = state.images.filter(image => image.id !== action.payload);
-    },
   },
   extraReducers: builder => {
     builder
@@ -34,7 +31,12 @@ const imagesSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchImages.fulfilled, (state, action) => {
-        state.images = action.payload;
+        // Append new images to the existing array
+        if (action.payload.length === 0) {
+          state.hasMore = false; // No more images in the next album
+        } else {
+          state.images = [...state.images, ...action.payload];
+        }
         state.loading = false;
       })
       .addCase(fetchImages.rejected, (state, action) => {
@@ -44,6 +46,5 @@ const imagesSlice = createSlice({
   },
 });
 
-export const {setSearchTerm, deleteImage} = imagesSlice.actions;
-
+export const {setSearchTerm} = imagesSlice.actions;
 export default imagesSlice.reducer;

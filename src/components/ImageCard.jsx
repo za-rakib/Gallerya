@@ -25,7 +25,7 @@ const ImageCard = ({item}) => {
       style={styles.card}
       onPress={handlePress}
       activeOpacity={0.8}>
-      {/* <Text>{item.id}</Text> */}
+      <Text>{item.id}</Text>
       <FastImage
         style={styles.image}
         source={{
@@ -40,22 +40,15 @@ const ImageCard = ({item}) => {
 
 const styles = StyleSheet.create({
   card: {
-    width: width / 2 - 20,
-    height: 100,
+    flex: 1,
     margin: 10,
-    borderRadius: 15,
+    borderRadius: 10,
     overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 5,
-    backgroundColor: '#fff',
   },
   image: {
     width: '100%',
-    height: '100%',
-    borderRadius: 10,
+    height: 100,
+    resizeMode: 'cover',
   },
 });
 

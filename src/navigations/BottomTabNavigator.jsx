@@ -30,7 +30,7 @@ const BottomTabNavigator = () => {
           let iconName;
 
           if (route.name === HOME_NAVIGATOR) {
-            iconName = 'home';
+            iconName = 'galary';
           } else if (route.name === ALBUM_NAVIGATOR) {
             iconName = 'image';
           }
