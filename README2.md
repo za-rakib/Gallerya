@@ -60,13 +60,33 @@ npm run ios
 
 ## Screenshots
 
-### Gallery Screen
-This screen displays a grid of images fetched from the JSONPlaceholder API. Users can scroll and tap on any image to view more details.
+### App Icon
 
-<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/Icon.jpeg" alt="Gallery Screen" width="400" />
+The app icon represents the gallery concept
+
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/Icon.jpeg" alt="App Icon" width="300" hight="600" />
+
+### Gallery Screen
+
+This screen displays a grid of images fetched from the JSONPlaceholder API.
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/gallery.jpeg" alt="Gallery Screen" width="300" hight="600"/>
 
 ### Image Detail Screen
-On the detail screen, users can see the selected image in a larger view along with additional metadata.
 
-<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/gallery.jpeg" alt="Image Detail Screen" width="400" />
+On the Image Detail Screen
 
+<img src="https://github.com/yourusername/mobile-gallery-app/raw/main/assets/detail_screen.png" alt="Image Detail Screen" width="400"  hight="600"/>
+
+### Filter Images by Titles and Albums
+
+Users can filter the gallery images by their titles or albums using a convenient search bar located at the top of the screen.
+
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/search(1).jpeg" alt="Image Detail Screen" width="400"  hight="600"/>
+
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/search(2).jpeg" alt="Image Detail Screen" width="400"  hight="600"/>
+
+## Demo Video
+
+Watch the demo of the app on YouTube:
+
+[![Watch the demo](https://img.youtube.com/vi/t6SwqFuxV64/0.jpg)](https://www.youtube.com/watch?v=t6SwqFuxV64)
