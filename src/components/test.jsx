@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   FlatList,
@@ -10,61 +10,75 @@ import {
   StatusBar,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import {fetchImages, setSearchTerm} from '../features/images/imagesSlice';
 import ImageCard from '../components/ImageCard';
-import {fetchImages} from '../features/images/imagesSlice';
+import SearchBar from '../components/SearchBar';
 
 const Gallery = () => {
   const {width} = useWindowDimensions();
   const dispatch = useDispatch();
+  const [album, setAlbum] = useState(1);
 
-  const {images, loading, error, page, hasMore} = useSelector(
-    state => state.images,
-  );
-
-  // Calculate number of columns based on screen width
   const calculateNumColumns = () => {
     const cardSize = 120;
     const margin = 10;
     return Math.floor(width / (cardSize + margin * 2));
   };
 
-  // Initial load
+  const {error, isLoading, images, searchTerm} = useSelector(
+    state => state.images,
+  );
+
   useEffect(() => {
     dispatch(fetchImages({album: 1}));
+    setAlbum(album + 1);
   }, [dispatch]);
 
-  // Load more images when user scrolls to the bottom
   const loadMoreImages = () => {
-    if (!loading && hasMore) {
-      dispatch(fetchImages({album: 1}));
+    if (!isLoading) {
+      dispatch(fetchImages({album: album + 1}));
     }
   };
 
-  const renderItem = useCallback(({item}) => {
-    return <ImageCard item={item} />;
-  }, []);
+  // Filter images based on the search term
+  const filteredImages = images.filter(
+    image =>
+      image.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      image.albumId.toString().includes(searchTerm),
+  );
+
+  const renderItem = ({item}) => <ImageCard item={item} />;
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar animated={true} backgroundColor="#232323" />
+      {/* Search bar for filtering images */}
+      <SearchBar
+        value={searchTerm}
+        onChange={text => dispatch(setSearchTerm(text))}
+        placeholder="Search by title or album"
+      />
       <Text style={styles.idText}>Image Gallery</Text>
       <View>
-        {loading && page === 1 && (
-          <ActivityIndicator size="large" color="#ff004c" />
+        {!isLoading && error && (
+          <View>
+            <Text>{error}</Text>
+          </View>
         )}
-        {!loading && error && <Text>{error}</Text>}
+        {isLoading && <ActivityIndicator size="large" color="#ff004c" />}
         <FlatList
-          data={images}
+          data={filteredImages}
           renderItem={renderItem}
           keyExtractor={item => item.id.toString()}
           numColumns={calculateNumColumns()}
           onEndReached={loadMoreImages}
-          onEndReachedThreshold={0.5} // Trigger when the user scrolls 50% from the bottom
+          onEndReachedThreshold={0.5}
           ListFooterComponent={
-            loading && page > 1 ? (
+            isLoading &&
+            filteredImages.length > 0 && (
               <ActivityIndicator size="small" color="#ff004c" />
-            ) : null
-          } // Show spinner when loading more images
+            )
+          }
           showsVerticalScrollIndicator={false}
         />
       </View>
@@ -75,16 +89,15 @@ const Gallery = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: '100%',
-    width: '100%',
-    marginBottom: 20,
+    padding: 10,
+    backgroundColor: '#f8f8f8',
   },
   idText: {
-    fontSize: 25,
-    color: '#888',
+    fontSize: 26,
+    color: '#333',
     fontWeight: 'bold',
     alignSelf: 'center',
-    margin: 15,
+    marginBottom: 15,
   },
 });
 

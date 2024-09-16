@@ -14,6 +14,7 @@ const initialState = {
   loading: false,
   error: null,
   hasMore: true,
+  searchTerm: '',
 };
 
 const imagesSlice = createSlice({

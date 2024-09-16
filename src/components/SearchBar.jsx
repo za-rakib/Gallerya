@@ -2,16 +2,19 @@ import React from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
 import Icon from './Icon';
 
-const SearchBar = () => {
+const SearchBar = ({value, onChange}) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
         <Icon name="search" size={26} color="#fff" />
       </View>
       <TextInput
-        placeholder="Search..."
-        placeholderTextColor="#888"
         style={styles.input}
+        placeholder="Search.."
+        value={value}
+        onChangeText={onChange}
+        autoCapitalize="none"
+        autoCorrect={false}
       />
     </View>
   );
@@ -24,7 +27,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#f1f1f1',
     borderRadius: 5,
     marginTop: 20,
-    // paddingHorizontal: 10,
     marginHorizontal: 15,
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},

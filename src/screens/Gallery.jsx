@@ -12,12 +12,12 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import ImageCard from '../components/ImageCard';
 import SearchBar from '../components/SearchBar';
-import {fetchImages} from '../features/images/imagesSlice';
+import {fetchImages, setSearchTerm} from '../features/images/imagesSlice';
 
 const Gallery = () => {
   const {width} = useWindowDimensions();
   const dispatch = useDispatch();
-  const [album, setAlbum] = useState(1); // State to track current album
+  const [album, setAlbum] = useState(1);
 
   const calculateNumColumns = () => {
     const cardSize = 120;
@@ -25,7 +25,7 @@ const Gallery = () => {
     return Math.floor(width / (cardSize + margin * 2));
   };
 
-  const {error, isLoading, images, hasMore} = useSelector(
+  const {error, isLoading, images, hasMore, searchTerm} = useSelector(
     state => state.images,
   );
 
@@ -39,12 +39,21 @@ const Gallery = () => {
     }
   };
 
+  const filteredImages = images.filter(
+    image =>
+      image.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      image.albumId.toString().includes(searchTerm),
+  );
+
   const renderItem = ({item}) => <ImageCard item={item} />;
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar animated={true} backgroundColor="#232323" />
-      <SearchBar />
+      <SearchBar
+        value={searchTerm}
+        onChange={text => dispatch(setSearchTerm(text))}
+      />
       <Text style={styles.title}>Image Gallery</Text>
 
       <View style={styles.listContainer}>
@@ -56,12 +65,12 @@ const Gallery = () => {
 
         {!error && !isLoading && images.length > 0 && (
           <FlatList
-            data={images}
+            data={filteredImages}
             renderItem={renderItem}
             keyExtractor={item => item.id.toString()}
             numColumns={calculateNumColumns()}
             onEndReached={loadMoreImages}
-            onEndReachedThreshold={0.1} // Adjust this value if needed
+            onEndReachedThreshold={0.1}
             ListFooterComponent={
               isLoading &&
               images.length > 0 && (
