@@ -38,6 +38,7 @@ yarn android
 # using npm
 npm run ios
 
+
 # OR using Yarn
 yarn ios
 ```
