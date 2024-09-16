@@ -1,35 +1,54 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Gallerya
 
-# Getting Started
+A mobile app that displays a gallery of images fetched from the JSONPlaceholder API. Users can browse thumbnails, view image details, search, and access images offline.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+This has been developed using `React Native` for both `iOS` and `Android`.
+Currently using Node v18.16.0 , java 20.0.2 and Ruby version 3.0.0p0 to build.
 
-## Step 1: Start the Metro Server
+## Features
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- **Gallery Screen**: Responsive grid layout with image thumbnails.
+- **Image Detail Screen**: Large view of the selected image with metadata.
+- **Search**: Filter images by title or album.
+- **Offline Caching**: Cached images for offline access.
+- **Lazy Loading**: Images load as the user scrolls.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Technologies Used
 
-```bash
-# using npm
+- **React Native**
+- **Redux Toolkit**
+- **React Navigation**
+
+## Installation
+
+1. Clone the repo:
+
+   ```bash
+   git clone https://github.com/za-rakib/Gallerya
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+
+   cd ios
+   pod install
+   ```
+
+3. Run the app:
+
+### using npm
+
 npm start
 
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+4: Start Application
 
 ### For Android
 
 ```bash
 # using npm
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
 ### For iOS
@@ -37,44 +56,37 @@ yarn android
 ```bash
 # using npm
 npm run ios
-
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## Screenshots
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+### App Icon
 
-## Step 3: Modifying your App
+The app icon represents the gallery concept
 
-Now that you have successfully run the app, let's modify it.
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/Icon.jpeg" alt="App Icon" width="300" height="600" />
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+### Gallery Screen
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+This screen displays a grid of images fetched from the JSONPlaceholder API.
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/gallery.jpeg" alt="Gallery Screen" width="300" height="600"/>
 
-## Congratulations! :tada:
+### Image Detail Screen
 
-You've successfully run and modified your React Native App. :partying_face:
+On the Image Detail Screen
 
-### Now what?
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/detailsScreen.jpeg" alt="Image Detail Screen" width="400"  height="600"/>
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+### Filter Images by Titles and Albums
 
-# Troubleshooting
+Users can filter the gallery images by their titles or albums using a convenient search bar located at the top of the screen.
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/search(1).jpeg" alt="Image Detail Screen" width="400"  height="600"/>
 
-# Learn More
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/search(2).jpeg" alt="Image Detail Screen" width="400"  height="600"/>
 
-To learn more about React Native, take a look at the following resources:
+## Demo Video
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Watch the demo of the app on YouTube:
+
+[![Watch the demo](https://img.youtube.com/vi/t6SwqFuxV64/0.jpg)](https://www.youtube.com/watch?v=t6SwqFuxV64)
