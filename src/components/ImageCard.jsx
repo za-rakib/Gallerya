@@ -25,7 +25,7 @@ const ImageCard = ({item}) => {
       style={styles.card}
       onPress={handlePress}
       activeOpacity={0.8}>
-      <Text>{item.id}</Text>
+      {/* <Text>{item.id}</Text> */}
       <FastImage
         style={styles.image}
         source={{

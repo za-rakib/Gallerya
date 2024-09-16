@@ -25,16 +25,17 @@ const Gallery = () => {
     return Math.floor(width / (cardSize + margin * 2));
   };
 
-  const {error, isLoading, images, hasMore, searchTerm} = useSelector(
+  const {error, loading, images, hasMore, searchTerm} = useSelector(
     state => state.images,
   );
 
+  //   console.log({loading});
   useEffect(() => {
     dispatch(fetchImages({album}));
   }, [dispatch, album]);
 
   const loadMoreImages = () => {
-    if (!isLoading && hasMore) {
+    if (!loading && hasMore) {
       setAlbum(prevAlbum => prevAlbum + 1);
     }
   };
@@ -57,13 +58,11 @@ const Gallery = () => {
       <Text style={styles.title}>Image Gallery</Text>
 
       <View style={styles.listContainer}>
-        {error && !isLoading && <Text style={styles.errorText}>{error}</Text>}
+        {error && !loading && <Text style={styles.errorText}>{error}</Text>}
 
-        {isLoading && images.length === 0 && (
-          <ActivityIndicator size="large" color="#ff004c" />
-        )}
+        {loading && <ActivityIndicator size="large" color="#ff004c" />}
 
-        {!error && !isLoading && images.length > 0 && (
+        {!error && !loading && images.length > 0 && (
           <FlatList
             data={filteredImages}
             renderItem={renderItem}
@@ -72,7 +71,7 @@ const Gallery = () => {
             onEndReached={loadMoreImages}
             onEndReachedThreshold={0.1}
             ListFooterComponent={
-              isLoading &&
+              loading &&
               images.length > 0 && (
                 <View style={{padding: 20}}>
                   <ActivityIndicator size="small" color="#ff004c" />
