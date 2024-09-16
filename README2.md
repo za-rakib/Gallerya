@@ -64,26 +64,26 @@ npm run ios
 
 The app icon represents the gallery concept
 
-<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/Icon.jpeg" alt="App Icon" width="300" hight="600" />
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/Icon.jpeg" alt="App Icon" width="300" height="600" />
 
 ### Gallery Screen
 
 This screen displays a grid of images fetched from the JSONPlaceholder API.
-<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/gallery.jpeg" alt="Gallery Screen" width="300" hight="600"/>
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/gallery.jpeg" alt="Gallery Screen" width="300" height="600"/>
 
 ### Image Detail Screen
 
 On the Image Detail Screen
 
-<img src="https://github.com/yourusername/mobile-gallery-app/raw/main/assets/detail_screen.png" alt="Image Detail Screen" width="400"  hight="600"/>
+<img src="https://github.com/yourusername/mobile-gallery-app/raw/main/assets/detail_screen.png" alt="Image Detail Screen" width="400"  height="600"/>
 
 ### Filter Images by Titles and Albums
 
 Users can filter the gallery images by their titles or albums using a convenient search bar located at the top of the screen.
 
-<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/search(1).jpeg" alt="Image Detail Screen" width="400"  hight="600"/>
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/search(1).jpeg" alt="Image Detail Screen" width="400"  height="600"/>
 
-<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/search(2).jpeg" alt="Image Detail Screen" width="400"  hight="600"/>
+<img src="https://github.com/za-rakib/Gallerya/blob/development/src/assets/screenshots/search(2).jpeg" alt="Image Detail Screen" width="400"  height="600"/>
 
 ## Demo Video
 
