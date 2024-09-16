@@ -26,16 +26,16 @@ A mobile app that displays a gallery of images fetched from the JSONPlaceholder 
 
 2. Install dependencies:
 
-```bash
-npm install
+   ```bash
+   npm install
 
-cd ios
-pod install
-```
+   cd ios
+   pod install
+   ```
 
 3. Run the app:
 
-# using npm
+### using npm
 
 npm start
 
@@ -46,7 +46,6 @@ npm start
 ```bash
 # using npm
 npm run android
-
 ```
 
 ### For iOS
@@ -57,3 +56,5 @@ npm run ios
 ```
 
 ## Screenshots
+
+![Alt text for the image](https://www.thewowstyle.com/wp-content/uploads/2015/01/nature-images..jpg)
